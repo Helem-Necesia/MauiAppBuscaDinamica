@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLite;
 
 namespace MauiAppBuscaDinamica.Model
 {
-    class Produto
+   public class Produto
     {
+        [PrimaryKey, AutoIncrement]
+        public int CodProduto { get; set; }
+        public string Descrição { get; set; }
+        
     }
 }
