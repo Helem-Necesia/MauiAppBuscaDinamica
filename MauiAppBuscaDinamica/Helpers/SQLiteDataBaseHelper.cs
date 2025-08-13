@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MauiAppBuscaDinamica.Model;
 using SQLite;
-using MauiAppBuscaDinamica;
-using MauiAppBuscaDinamica.Model;
 
 
 
@@ -27,7 +21,7 @@ namespace MauiAppBuscaDinamica.Helpers
         }
         public Task<List<Produto>>  Update(Produto p)
         {
-        string sql = "UPDATE produto SET Descrição=?, Quantidade=?, Preço=? WHERE CodProduto=?";
+        string sql = "UPDATE produto SET Descricao=?, Quantidade=?, Preo=? WHERE CodProduto=?";
         return _conn.QueryAsync<Produto>(
             sql, p.Descrição, p.Quantidade, p.Preço, p.CodProduto);
         
@@ -43,8 +37,10 @@ namespace MauiAppBuscaDinamica.Helpers
         }
         public Task<List<Produto>> Search(string query)
         {
-            string sql = "SELECT * FROM Produto WHERE descrição LIKE '%%'";
+            string sql = "SELECT * FROM Produto WHERE descrição LIKE '%"+query+"%'";
             return _conn.QueryAsync<Produto>(sql);
         }
+        
+    
     }
 }
