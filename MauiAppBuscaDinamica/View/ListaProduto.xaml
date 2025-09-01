@@ -10,13 +10,21 @@
 
     </ContentPage.ToolbarItems>
     
-     
+     <!-- SEARCHBAR Busca para pesquisar os produtos cadastrados-->
     <VerticalStackLayout>
+        <!--Busca um dado que o usuário digitou-->
+        <!-- PLACEHOLDER fala para o usuário o que ele deve fazer-->
+        
         <SearchBar x:Name="txt_search"
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged"/>
+       
+        <!--LISTVIEW componente de interface gráfica que precisa ser localizado para add e remover itens da lista--> 
         <ListView x:Name="lst_produtos">
 
+            <!-- HEADER Visualizar lista de cabeçalho-->
+            <!-- GRID para fazer apresentação em colunas -->
+            <!-- LABEL é um rótulo / nome das colunas -->
             <ListView.Header>
                 <Grid ColumnDefinitions ="*,*,*,*,*,*">
                     <Label Grid.Column="0" Text="CodProduto"/>
@@ -28,11 +36,18 @@
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
+                
+                <!-- MODELO DE DADOS -->
                     <DataTemplate>
+                        <!-- VIEW CELL é a célula de visualização pra ver o conteúdo da lista-->
                         <ViewCell>
                             <ViewCell.ContextActions>
+                                
+                                <!-- MENU ITEM - Menu de contexto será feito apenas no registro selecionado na lista -->
+                            <!-- BINDING - vinculação que chama a propriedade da Classe Model Produto-->
                                 <MenuItem  Text="Remover"/>
                             </ViewCell.ContextActions>
+                           
                             <Grid ColumnDefinitions="*, *, *, *, *, *">
                                 <Label Grid.Column="0" Text="{Binding CodProduto}"/>
                                 <Label Grid.Column="1" Text="{Binding Descrição}"/>

@@ -1,6 +1,8 @@
 using MauiAppBuscaDinamica.Model;
 using System.Collections.ObjectModel;
 
+
+
 namespace MauiAppBuscaDinamica.View;
 
 public partial class ListaProduto : ContentPage
@@ -8,14 +10,15 @@ public partial class ListaProduto : ContentPage
       ObservableCollection<Produto> lista = new ObservableCollection<Produto>();
 
     
+	
 	public ListaProduto()
 	{
 		InitializeComponent();
 
 		lst_produtos.ItemsSource = lista;
 	}
-
-    protected override async void OnAppearing()
+	
+    protected override async void OnAppearing() 
     {
 		List<Produto> tmp = await App.Db.GetAll();
 		tmp.ForEach(i => lista.Add(i));
@@ -34,7 +37,7 @@ public partial class ListaProduto : ContentPage
 	
 		
 		}
-
+	
     private async void txt_search_TextChanged(object sender, TextChangedEventArgs e)
     {
 		string q = e.NewTextValue;
@@ -52,3 +55,5 @@ public partial class ListaProduto : ContentPage
 		DisplayAlert("Total dos Produtos", msg, "OK");
     }
 }
+
+
